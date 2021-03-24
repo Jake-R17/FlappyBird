@@ -145,7 +145,7 @@ namespace FlappyBird
             this.RetryBtn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.RetryBtn.UseVisualStyleBackColor = true;
             this.RetryBtn.Visible = false;
-            this.RetryBtn.Click += new System.EventHandler(this.RetryBtn_Click);
+            this.RetryBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RetryBtn_MouseClick);
             // 
             // Form1
             // 

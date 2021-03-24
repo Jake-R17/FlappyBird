@@ -76,7 +76,15 @@ namespace FlappyBird
             EndScore.Text = "Total Score: " + scoreCount;
         }
 
-        private void RetryBtn_Click(object sender, EventArgs e)
+        private void ScoreUp(object sender, EventArgs e)
+        {
+            if (scoreCount % 1 == 0 && !(pipeSpeed >= 15))
+            {
+                pipeSpeed++;
+            }
+        }
+
+        private void RetryBtn_MouseClick(object sender, MouseEventArgs e)
         {
             PipeB.Left = 500;
             PipeT.Left = 500;
@@ -90,14 +98,6 @@ namespace FlappyBird
             RetryBtn.Enabled = false;
 
             FlappyBird.Location = new Point(38, 279);
-        }
-
-        private void ScoreUp(object sender, EventArgs e)
-        {
-            if (scoreCount % 5 == 0 && pipeSpeed != 15)
-            {
-                pipeSpeed++;
-            }
         }
     }
 }
