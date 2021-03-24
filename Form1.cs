@@ -78,8 +78,8 @@ namespace FlappyBird
 
         private void RetryBtn_Click(object sender, EventArgs e)
         {
-            PipeB.Left = 700;
-            PipeT.Left = 700;
+            PipeB.Left = 500;
+            PipeT.Left = 500;
             scoreCount = 0;
             pipeSpeed = 5;
 
@@ -90,8 +90,6 @@ namespace FlappyBird
             RetryBtn.Enabled = false;
 
             FlappyBird.Location = new Point(38, 279);
-            
-            DefaultTimer.Start();
         }
 
         private void ScoreUp(object sender, EventArgs e)

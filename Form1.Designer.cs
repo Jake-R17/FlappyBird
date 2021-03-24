@@ -71,7 +71,7 @@ namespace FlappyBird
             // PipeT
             // 
             this.PipeT.Image = global::FlappyBird.Properties.Resources.pipedown;
-            this.PipeT.Location = new System.Drawing.Point(508, -1);
+            this.PipeT.Location = new System.Drawing.Point(500, -1);
             this.PipeT.Margin = new System.Windows.Forms.Padding(0);
             this.PipeT.Name = "PipeT";
             this.PipeT.Size = new System.Drawing.Size(100, 230);
@@ -82,7 +82,7 @@ namespace FlappyBird
             // PipeB
             // 
             this.PipeB.Image = global::FlappyBird.Properties.Resources.pipe;
-            this.PipeB.Location = new System.Drawing.Point(508, 397);
+            this.PipeB.Location = new System.Drawing.Point(500, 397);
             this.PipeB.Margin = new System.Windows.Forms.Padding(0);
             this.PipeB.Name = "PipeB";
             this.PipeB.Size = new System.Drawing.Size(100, 230);
@@ -135,11 +135,11 @@ namespace FlappyBird
             // RetryBtn
             // 
             this.RetryBtn.Enabled = false;
-            this.RetryBtn.Font = new System.Drawing.Font("Segoe UI Emoji", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.RetryBtn.Font = new System.Drawing.Font("Segoe UI Emoji", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.RetryBtn.Location = new System.Drawing.Point(242, 371);
             this.RetryBtn.Margin = new System.Windows.Forms.Padding(0);
             this.RetryBtn.Name = "RetryBtn";
-            this.RetryBtn.Size = new System.Drawing.Size(115, 41);
+            this.RetryBtn.Size = new System.Drawing.Size(124, 47);
             this.RetryBtn.TabIndex = 8;
             this.RetryBtn.Text = "Retry";
             this.RetryBtn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
