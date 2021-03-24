@@ -12,7 +12,7 @@ namespace FlappyBird
 {
     public partial class Form1 : Form
     {
-        readonly int pipeSpeed = 5;
+        int pipeSpeed = 5;
         int gravity = 5;
         int scoreCount = 0;
 
@@ -55,8 +55,10 @@ namespace FlappyBird
         {
             if (e.KeyCode == Keys.Space)
             {
-                DefaultTimer.Start();
-
+                if (DefaultTimer.Enabled == false && Score.Visible == true)
+                {
+                    DefaultTimer.Start();
+                }
                 gravity = -5;
             }
         }
@@ -79,6 +81,7 @@ namespace FlappyBird
             PipeB.Left = 700;
             PipeT.Left = 700;
             scoreCount = 0;
+            pipeSpeed = 5;
 
             Score.Visible = true;
             GameOver.Visible = false;
@@ -89,6 +92,14 @@ namespace FlappyBird
             FlappyBird.Location = new Point(38, 279);
             
             DefaultTimer.Start();
+        }
+
+        private void ScoreUp(object sender, EventArgs e)
+        {
+            if (scoreCount % 5 == 0 && pipeSpeed != 15)
+            {
+                pipeSpeed++;
+            }
         }
     }
 }

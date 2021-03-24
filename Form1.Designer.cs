@@ -100,6 +100,7 @@ namespace FlappyBird
             this.Score.Size = new System.Drawing.Size(210, 59);
             this.Score.TabIndex = 5;
             this.Score.Text = "Score: 0";
+            this.Score.TextChanged += new System.EventHandler(this.ScoreUp);
             // 
             // DefaultTimer
             // 
