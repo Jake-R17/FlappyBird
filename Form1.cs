@@ -17,6 +17,8 @@ namespace FlappyBird
         int scoreCount = 0;
         int lives = 3;
 
+        List<int> attemptScore = new List<int>();
+
         public Form1()
         {
             InitializeComponent();
@@ -69,23 +71,24 @@ namespace FlappyBird
             DefaultTimer.Stop();
 
             lives--;
+            attemptScore.Add(scoreCount);
 
             GameOver.Visible = true;
             Score.Visible = false;
 
-            if (lives >= 1)
+            RetryBtn.Visible = true;
+            RetryBtn.Enabled = true;
+
+            if (lives > 0)
             {
-                RetryBtn.Visible = true;
-                RetryBtn.Enabled = true;
+                GameOver.Text = $"{lives} lives left!";
 
                 if (lives == 2)
                 {
-                    GameOver.Text = $"{lives} lives left!";
                     GameOver.ForeColor = Color.Green;
                 }
                 if (lives == 1)
                 {
-                    GameOver.Text = $"{lives} live left!";
                     GameOver.ForeColor = Color.Orange;
                 }
             }
@@ -96,12 +99,15 @@ namespace FlappyBird
 
                 EndScore.Visible = true;
                 EndScore.Text = "Total Score: " + scoreCount;
+                attemptScore.Clear();
+
+                lives = 3;
             }
         }
 
         private void ScoreUp(object sender, EventArgs e)
         {
-            if (scoreCount % 1 == 0 && !(pipeSpeed >= 15))
+            if (scoreCount % 5 == 0 && !(pipeSpeed >= 15))
             {
                 pipeSpeed++;
             }
@@ -109,9 +115,11 @@ namespace FlappyBird
 
         private void RetryBtn_MouseClick(object sender, MouseEventArgs e)
         {
+            scoreCount = 0;
+            Score.Text = "Score: " + scoreCount;
+
             PipeB.Left = 500;
             PipeT.Left = 500;
-            scoreCount = 0;
             pipeSpeed = 5;
 
             Score.Visible = true;
