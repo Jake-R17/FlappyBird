@@ -15,6 +15,7 @@ namespace FlappyBird
         int pipeSpeed = 5;
         int gravity = 5;
         int scoreCount = 0;
+        int lives = 3;
 
         public Form1()
         {
@@ -67,13 +68,35 @@ namespace FlappyBird
         {
             DefaultTimer.Stop();
 
-            Score.Visible = false;
-            GameOver.Visible = true;
-            RetryBtn.Visible = true;
-            RetryBtn.Enabled = true;
+            lives--;
 
-            EndScore.Visible = true;
-            EndScore.Text = "Total Score: " + scoreCount;
+            GameOver.Visible = true;
+            Score.Visible = false;
+
+            if (lives >= 1)
+            {
+                RetryBtn.Visible = true;
+                RetryBtn.Enabled = true;
+
+                if (lives == 2)
+                {
+                    GameOver.Text = $"{lives} lives left!";
+                    GameOver.ForeColor = Color.Green;
+                }
+                if (lives == 1)
+                {
+                    GameOver.Text = $"{lives} live left!";
+                    GameOver.ForeColor = Color.Orange;
+                }
+            }
+            else
+            {
+                GameOver.Text = "GAME OVER!";
+                GameOver.ForeColor = Color.Red;
+
+                EndScore.Visible = true;
+                EndScore.Text = "Total Score: " + scoreCount;
+            }
         }
 
         private void ScoreUp(object sender, EventArgs e)
