@@ -34,11 +34,13 @@ namespace FlappyBird
             if (PipeB.Left < -100 || PipeT.Left < -100)
             {
                 Random ran = new Random();
-                var newHeight = ran.Next(140, 310);
+                var newHeight = ran.Next(100, 360);
+
+                var bHeight = 630 - 170 - newHeight;
 
                 PipeT.Height = newHeight;
-                PipeB.Height = newHeight;
-                PipeB.Location = new Point(700, 630 - newHeight);
+                PipeB.Height = bHeight;
+                PipeB.Location = new Point(700, 630 - bHeight);
 
                 PipeT.Left = 700;
                 PipeB.Left = 700;
@@ -72,6 +74,16 @@ namespace FlappyBird
                 e.SuppressKeyPress = true;
 
                 gravity = -5;
+            }
+
+            if (e.KeyCode == Keys.Escape && DefaultTimer.Enabled == true)
+            {
+                DefaultTimer.Stop();
+
+                ResumeBtn.Visible = true;
+                ResumeBtn.Enabled = true;
+
+                Paused.Visible = true;
             }
         }
 
@@ -116,7 +128,7 @@ namespace FlappyBird
 
         private void ScoreUp(object sender, EventArgs e)
         {
-            if (scoreCount % 5 == 0 && !(pipeSpeed >= 15))
+            if (scoreCount % 5 == 0 && pipeSpeed <= 10)
             {
                 pipeSpeed++;
             }
@@ -124,18 +136,7 @@ namespace FlappyBird
 
         private void RetryBtn_MouseClick(object sender, MouseEventArgs e)
         {
-            FlappyBird.Location = new Point(38, 279);
-
-            scoreCount = 0;
-            Score.Text = "Score: " + scoreCount;
-
-            PipeT.Height = 230;
-            PipeB.Height = 230;
-            PipeT.Location = new Point(500, 0);
-            PipeB.Location = new Point(500, 400);
-            PipeT.Left = 500;
-            PipeB.Left = 500;
-            pipeSpeed = 5;
+            Start();
 
             if (lives > 0)
             {
@@ -155,6 +156,22 @@ namespace FlappyBird
             }
         }
 
+        private void Start()
+        {
+            FlappyBird.Location = new Point(38, 279);
+
+            scoreCount = 0;
+            Score.Text = "Score: " + scoreCount;
+
+            PipeT.Height = 230;
+            PipeB.Height = 230;
+            PipeT.Location = new Point(500, 0);
+            PipeB.Location = new Point(500, 400);
+            PipeT.Left = 500;
+            PipeB.Left = 500;
+            pipeSpeed = 5;
+        }
+
         private void Menu()
         {
             Score.Visible = false;
@@ -169,6 +186,16 @@ namespace FlappyBird
 
             endCount = 0;
             lives = 3;
+        }
+
+        private void ResumeBtn_Click(object sender, EventArgs e)
+        {
+            ResumeBtn.Enabled = false;
+            ResumeBtn.Visible = false;
+
+            Paused.Visible = false;
+
+            DefaultTimer.Start();
         }
     }
 }
