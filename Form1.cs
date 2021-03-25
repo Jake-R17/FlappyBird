@@ -16,8 +16,7 @@ namespace FlappyBird
         int gravity = 5;
         int scoreCount = 0;
         int lives = 3;
-
-        List<int> attemptScore = new List<int>();
+        int endCount = 0;
 
         public Form1()
         {
@@ -71,13 +70,14 @@ namespace FlappyBird
             DefaultTimer.Stop();
 
             lives--;
-            attemptScore.Add(scoreCount);
+            endCount += scoreCount;
 
             GameOver.Visible = true;
             Score.Visible = false;
 
             RetryBtn.Visible = true;
             RetryBtn.Enabled = true;
+            RetryBtn.Text = "Retry";
 
             if (lives > 0)
             {
@@ -94,14 +94,13 @@ namespace FlappyBird
             }
             else
             {
+                RetryBtn.Text = "Menu";
+
                 GameOver.Text = "GAME OVER!";
                 GameOver.ForeColor = Color.Red;
 
                 EndScore.Visible = true;
-                EndScore.Text = "Total Score: " + scoreCount;
-                attemptScore.Clear();
-
-                lives = 3;
+                EndScore.Text = "Total Score: " + endCount;
             }
         }
 
@@ -115,6 +114,8 @@ namespace FlappyBird
 
         private void RetryBtn_MouseClick(object sender, MouseEventArgs e)
         {
+            FlappyBird.Location = new Point(38, 279);
+
             scoreCount = 0;
             Score.Text = "Score: " + scoreCount;
 
@@ -122,13 +123,38 @@ namespace FlappyBird
             PipeT.Left = 500;
             pipeSpeed = 5;
 
-            Score.Visible = true;
-            GameOver.Visible = false;
-            EndScore.Visible = false;
-            RetryBtn.Visible = false;
-            RetryBtn.Enabled = false;
+            if (lives > 0)
+            {
+                Score.Visible = true;
+                GameOver.Visible = false;
+                EndScore.Visible = false;
+                RetryBtn.Visible = false;
+                RetryBtn.Enabled = false;
 
-            FlappyBird.Location = new Point(38, 279);
+                FlappyBird.Visible = true;
+                PipeT.Visible = true;
+                PipeB.Visible = true;
+            }
+            else
+            {
+                Menu();
+            }
+        }
+
+        private void Menu()
+        {
+            Score.Visible = false;
+            EndScore.Visible = false;
+            RetryBtn.Visible = true;
+            RetryBtn.Enabled = true;
+
+            GameOver.ForeColor = Color.FromArgb(32, 3, 0);
+
+            GameOver.Text = "Flappy Bird!";
+            RetryBtn.Text = "Play";
+
+            endCount = 0;
+            lives = 3;
         }
     }
 }

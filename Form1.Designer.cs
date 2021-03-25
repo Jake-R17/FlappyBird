@@ -136,10 +136,10 @@ namespace FlappyBird
             // 
             this.RetryBtn.Enabled = false;
             this.RetryBtn.Font = new System.Drawing.Font("Segoe UI Emoji", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.RetryBtn.Location = new System.Drawing.Point(242, 371);
+            this.RetryBtn.Location = new System.Drawing.Point(260, 371);
             this.RetryBtn.Margin = new System.Windows.Forms.Padding(0);
             this.RetryBtn.Name = "RetryBtn";
-            this.RetryBtn.Size = new System.Drawing.Size(124, 47);
+            this.RetryBtn.Size = new System.Drawing.Size(102, 44);
             this.RetryBtn.TabIndex = 8;
             this.RetryBtn.Text = "Retry";
             this.RetryBtn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
