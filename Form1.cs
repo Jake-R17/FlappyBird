@@ -21,6 +21,7 @@ namespace FlappyBird
         public Form1()
         {
             InitializeComponent();
+            Menu();
         }
 
         private void DefaultTimer_Tick(object sender, EventArgs e)
@@ -32,8 +33,15 @@ namespace FlappyBird
 
             if (PipeB.Left < -100 || PipeT.Left < -100)
             {
-                PipeB.Left = 700;
+                Random ran = new Random();
+                var newHeight = ran.Next(140, 310);
+
+                PipeT.Height = newHeight;
+                PipeB.Height = newHeight;
+                PipeB.Location = new Point(700, 630 - newHeight);
+
                 PipeT.Left = 700;
+                PipeB.Left = 700;
                 scoreCount++;
             }
 
@@ -61,6 +69,8 @@ namespace FlappyBird
                 {
                     DefaultTimer.Start();
                 }
+                e.SuppressKeyPress = true;
+
                 gravity = -5;
             }
         }
@@ -119,8 +129,12 @@ namespace FlappyBird
             scoreCount = 0;
             Score.Text = "Score: " + scoreCount;
 
-            PipeB.Left = 500;
+            PipeT.Height = 230;
+            PipeB.Height = 230;
+            PipeT.Location = new Point(500, 0);
+            PipeB.Location = new Point(500, 400);
             PipeT.Left = 500;
+            PipeB.Left = 500;
             pipeSpeed = 5;
 
             if (lives > 0)
@@ -148,7 +162,7 @@ namespace FlappyBird
             RetryBtn.Visible = true;
             RetryBtn.Enabled = true;
 
-            GameOver.ForeColor = Color.FromArgb(32, 3, 0);
+            GameOver.ForeColor = Color.FromArgb(119, 221, 119);
 
             GameOver.Text = "Flappy Bird!";
             RetryBtn.Text = "Play";

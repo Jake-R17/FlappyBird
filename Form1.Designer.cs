@@ -65,6 +65,7 @@ namespace FlappyBird
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Ground.Image = global::FlappyBird.Properties.Resources.ground;
             this.Ground.Location = new System.Drawing.Point(-9, 630);
+            this.Ground.Margin = new System.Windows.Forms.Padding(0);
             this.Ground.Name = "Ground";
             this.Ground.Size = new System.Drawing.Size(696, 61);
             this.Ground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -73,6 +74,7 @@ namespace FlappyBird
             // 
             // PipeT
             // 
+            this.PipeT.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.PipeT.Image = global::FlappyBird.Properties.Resources.pipedown;
             this.PipeT.Location = new System.Drawing.Point(500, 0);
             this.PipeT.Margin = new System.Windows.Forms.Padding(0);
@@ -84,6 +86,7 @@ namespace FlappyBird
             // 
             // PipeB
             // 
+            this.PipeB.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.PipeB.Image = global::FlappyBird.Properties.Resources.pipe;
             this.PipeB.Location = new System.Drawing.Point(500, 400);
             this.PipeB.Margin = new System.Windows.Forms.Padding(0);
