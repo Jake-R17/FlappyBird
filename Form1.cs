@@ -18,6 +18,7 @@ namespace FlappyBird
             Menu();
         }
 
+        // The main timer
         private void DefaultTimer_Tick(object sender, EventArgs e)
         {
             FlappyBird.Top += gravity;
@@ -27,6 +28,7 @@ namespace FlappyBird
 
             if (PipeB.Left < -100 || PipeT.Left < -100)
             {
+                // Logic behind the random pipe height
                 Random ran = new Random();
                 var newHeight = ran.Next(100, 360);
 
@@ -41,6 +43,7 @@ namespace FlappyBird
                 scoreCount++;
             }
 
+            // Call the EndGame method upon death
             if (FlappyBird.Bounds.IntersectsWith(PipeB.Bounds)
                || FlappyBird.Bounds.IntersectsWith(PipeT.Bounds)
                || FlappyBird.Bounds.IntersectsWith(Ground.Bounds)
@@ -50,18 +53,13 @@ namespace FlappyBird
             }
         }
 
-        private void KeyIsUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Space)
-            {
-                gravity = 5;
-            }
-        }
-
+        // Register keypresses
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
+            // Prevent windows sounds when clicking buttons
             e.SuppressKeyPress = true;
 
+            // Make flappy go up; key is pressed
             if (e.KeyCode == Keys.Space)
             {
                 if (DefaultTimer.Enabled == false && Score.Visible == true)
@@ -72,6 +70,7 @@ namespace FlappyBird
                 gravity = -5;
             }
 
+            // Pause menu
             if (e.KeyCode == Keys.Escape && DefaultTimer.Enabled == true)
             {
                 DefaultTimer.Stop();
@@ -83,13 +82,24 @@ namespace FlappyBird
             }
         }
 
+        private void KeyIsUp(object sender, KeyEventArgs e)
+        {
+            // Make glappy go down; key is released
+            if (e.KeyCode == Keys.Space)
+            {
+                gravity = 5;
+            }
+        }
+
         private void EndGame()
         {
             DefaultTimer.Stop();
 
+            // Remove 1 live and count the total score
             lives--;
             endCount += scoreCount;
 
+            // Default display upon death
             GameOver.Visible = true;
             Score.Visible = false;
 
@@ -97,6 +107,7 @@ namespace FlappyBird
             RetryBtn.Enabled = true;
             RetryBtn.Text = "Retry";
 
+            // Logic behind the objects upon death
             if (lives > 0)
             {
                 GameOver.Text = $"{lives} lives left!";
@@ -124,6 +135,7 @@ namespace FlappyBird
 
         private void ScoreUp(object sender, EventArgs e)
         {
+            // Add 1 pipespeed for every 5 score, max 10
             if (scoreCount % 5 == 0 && pipeSpeed <= 10)
             {
                 pipeSpeed++;
@@ -134,6 +146,7 @@ namespace FlappyBird
         {
             Start();
 
+            // Logic for the objects depending on the lives
             if (lives > 0)
             {
                 Score.Visible = true;
@@ -154,6 +167,8 @@ namespace FlappyBird
 
         private void Start()
         {
+            // Set all objects to the default location
+
             FlappyBird.Location = new Point(38, 279);
 
             scoreCount = 0;
@@ -168,6 +183,7 @@ namespace FlappyBird
             pipeSpeed = 5;
         }
 
+        // Default screen, shown when loading and after 3 deaths
         private void Menu()
         {
             Score.Visible = false;
@@ -185,6 +201,7 @@ namespace FlappyBird
             lives = 3;
         }
 
+        // Resume button
         private void ResumeBtn_Click(object sender, EventArgs e)
         {
             ResumeBtn.Enabled = false;
