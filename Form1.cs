@@ -49,7 +49,8 @@ namespace FlappyBird
 
             if (FlappyBird.Bounds.IntersectsWith(PipeB.Bounds)
                || FlappyBird.Bounds.IntersectsWith(PipeT.Bounds)
-               || FlappyBird.Bounds.IntersectsWith(Ground.Bounds))
+               || FlappyBird.Bounds.IntersectsWith(Ground.Bounds)
+               || FlappyBird.Location.Y <= 0)
             {
                 EndGame();
             }
@@ -178,6 +179,7 @@ namespace FlappyBird
             EndScore.Visible = false;
             RetryBtn.Visible = true;
             RetryBtn.Enabled = true;
+            GameOver.Visible = true;
 
             GameOver.ForeColor = Color.FromArgb(119, 221, 119);
 
