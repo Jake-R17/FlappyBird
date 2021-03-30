@@ -18,7 +18,6 @@ namespace FlappyBird
             Menu();
         }
 
-        // The main timer
         private void DefaultTimer_Tick(object sender, EventArgs e)
         {
             FlappyBird.Top += gravity;
@@ -38,6 +37,7 @@ namespace FlappyBird
                 PipeB.Height = bHeight;
                 PipeB.Location = new Point(700, 630 - bHeight);
 
+                // Reset pipe location after it goes off screen
                 PipeT.Left = 700;
                 PipeB.Left = 700;
                 scoreCount++;
@@ -53,12 +53,8 @@ namespace FlappyBird
             }
         }
 
-        // Register keypresses
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
-            // Prevent windows sounds when clicking buttons
-            e.SuppressKeyPress = true;
-
             // Make flappy go up; key is pressed
             if (e.KeyCode == Keys.Space)
             {
@@ -80,11 +76,14 @@ namespace FlappyBird
 
                 Paused.Visible = true;
             }
+
+            // Prevent windows sounds when clicking buttons
+            e.SuppressKeyPress = true;
         }
 
         private void KeyIsUp(object sender, KeyEventArgs e)
         {
-            // Make glappy go down; key is released
+            // Make flappy go down; key is released
             if (e.KeyCode == Keys.Space)
             {
                 gravity = 5;
@@ -95,7 +94,7 @@ namespace FlappyBird
         {
             DefaultTimer.Stop();
 
-            // Remove 1 live and count the total score
+            // Remove 1 live and add score to the total score
             lives--;
             endCount += scoreCount;
 
@@ -107,7 +106,7 @@ namespace FlappyBird
             RetryBtn.Enabled = true;
             RetryBtn.Text = "Retry";
 
-            // Logic behind the objects upon death
+            // Logic behind the lives text upon death
             if (lives > 0)
             {
                 GameOver.Text = $"{lives} lives left!";
@@ -142,7 +141,7 @@ namespace FlappyBird
             }
         }
 
-        private void RetryBtn_MouseClick(object sender, MouseEventArgs e)
+        private void RetryBtn_Click(object sender, EventArgs e)
         {
             Start();
 
@@ -154,8 +153,9 @@ namespace FlappyBird
                 EndScore.Visible = false;
                 RetryBtn.Visible = false;
                 RetryBtn.Enabled = false;
-
                 FlappyBird.Visible = true;
+                HighScore.Visible = false;
+                HighScore.Enabled = false;
                 PipeT.Visible = true;
                 PipeB.Visible = true;
             }
@@ -191,25 +191,48 @@ namespace FlappyBird
             RetryBtn.Visible = true;
             RetryBtn.Enabled = true;
             GameOver.Visible = true;
+            HighScore.Visible = true;
+            HighScore.Enabled = true;
 
             GameOver.ForeColor = Color.FromArgb(119, 221, 119);
 
             GameOver.Text = "Flappy Bird!";
             RetryBtn.Text = "Play";
+            HighScore.Text = "Highscores";
 
             endCount = 0;
             lives = 3;
         }
 
-        // Resume button
         private void ResumeBtn_Click(object sender, EventArgs e)
         {
+            // Resume the game and set object states
             ResumeBtn.Enabled = false;
             ResumeBtn.Visible = false;
 
             Paused.Visible = false;
 
             DefaultTimer.Start();
+        }
+
+        private void HighScore_Click(object sender, EventArgs e)
+        {
+            if (GameOver.Visible == true)
+            {
+                RetryBtn.Visible = false;
+                RetryBtn.Enabled = false;
+                GameOver.Visible = false;
+
+                HighScore.Text = "Back To Menu";
+            }
+            else
+            {
+                RetryBtn.Visible = true;
+                RetryBtn.Enabled = true;
+                GameOver.Visible = true;
+
+                HighScore.Text = "Highscores";
+            }
         }
     }
 }

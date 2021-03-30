@@ -43,6 +43,7 @@ namespace FlappyBird
             this.RetryBtn = new System.Windows.Forms.Button();
             this.ResumeBtn = new System.Windows.Forms.Button();
             this.Paused = new System.Windows.Forms.Label();
+            this.HighScore = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.FlappyBird)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PipeT)).BeginInit();
@@ -76,7 +77,7 @@ namespace FlappyBird
             // 
             // PipeT
             // 
-            this.PipeT.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.PipeT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PipeT.Image = global::FlappyBird.Properties.Resources.pipedown;
             this.PipeT.Location = new System.Drawing.Point(500, 0);
             this.PipeT.Margin = new System.Windows.Forms.Padding(0);
@@ -88,7 +89,7 @@ namespace FlappyBird
             // 
             // PipeB
             // 
-            this.PipeB.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.PipeB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.PipeB.Image = global::FlappyBird.Properties.Resources.pipe;
             this.PipeB.Location = new System.Drawing.Point(500, 400);
             this.PipeB.Margin = new System.Windows.Forms.Padding(0);
@@ -121,7 +122,7 @@ namespace FlappyBird
             this.GameOver.BackColor = System.Drawing.Color.Aqua;
             this.GameOver.Font = new System.Drawing.Font("Showcard Gothic", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.GameOver.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.GameOver.Location = new System.Drawing.Point(130, 252);
+            this.GameOver.Location = new System.Drawing.Point(127, 252);
             this.GameOver.Name = "GameOver";
             this.GameOver.Size = new System.Drawing.Size(422, 79);
             this.GameOver.TabIndex = 6;
@@ -132,7 +133,7 @@ namespace FlappyBird
             // 
             this.EndScore.AutoSize = true;
             this.EndScore.Font = new System.Drawing.Font("Showcard Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.EndScore.Location = new System.Drawing.Point(204, 331);
+            this.EndScore.Location = new System.Drawing.Point(197, 331);
             this.EndScore.Name = "EndScore";
             this.EndScore.Size = new System.Drawing.Size(266, 40);
             this.EndScore.TabIndex = 7;
@@ -144,23 +145,24 @@ namespace FlappyBird
             // 
             this.RetryBtn.Enabled = false;
             this.RetryBtn.Font = new System.Drawing.Font("Segoe UI Emoji", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.RetryBtn.Location = new System.Drawing.Point(275, 371);
+            this.RetryBtn.Location = new System.Drawing.Point(267, 388);
             this.RetryBtn.Margin = new System.Windows.Forms.Padding(0);
             this.RetryBtn.Name = "RetryBtn";
-            this.RetryBtn.Size = new System.Drawing.Size(102, 44);
+            this.RetryBtn.Size = new System.Drawing.Size(117, 44);
             this.RetryBtn.TabIndex = 8;
             this.RetryBtn.Text = "Retry";
             this.RetryBtn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.RetryBtn.UseVisualStyleBackColor = true;
             this.RetryBtn.Visible = false;
-            this.RetryBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RetryBtn_MouseClick);
+            this.RetryBtn.Click += new System.EventHandler(this.RetryBtn_Click);
             // 
             // ResumeBtn
             // 
             this.ResumeBtn.Font = new System.Drawing.Font("Segoe UI Emoji", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ResumeBtn.Location = new System.Drawing.Point(260, 279);
+            this.ResumeBtn.Location = new System.Drawing.Point(267, 315);
+            this.ResumeBtn.Margin = new System.Windows.Forms.Padding(0);
             this.ResumeBtn.Name = "ResumeBtn";
-            this.ResumeBtn.Size = new System.Drawing.Size(126, 43);
+            this.ResumeBtn.Size = new System.Drawing.Size(117, 43);
             this.ResumeBtn.TabIndex = 9;
             this.ResumeBtn.Text = "Resume";
             this.ResumeBtn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -172,7 +174,7 @@ namespace FlappyBird
             // 
             this.Paused.AutoSize = true;
             this.Paused.Font = new System.Drawing.Font("Segoe UI", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Paused.Location = new System.Drawing.Point(204, 144);
+            this.Paused.Location = new System.Drawing.Point(213, 166);
             this.Paused.Margin = new System.Windows.Forms.Padding(0);
             this.Paused.Name = "Paused";
             this.Paused.Size = new System.Drawing.Size(250, 86);
@@ -180,12 +182,25 @@ namespace FlappyBird
             this.Paused.Text = "Paused";
             this.Paused.Visible = false;
             // 
+            // HighScore
+            // 
+            this.HighScore.Font = new System.Drawing.Font("Segoe UI Emoji", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.HighScore.Location = new System.Drawing.Point(233, 435);
+            this.HighScore.Name = "HighScore";
+            this.HighScore.Size = new System.Drawing.Size(187, 46);
+            this.HighScore.TabIndex = 11;
+            this.HighScore.Text = "Highscores";
+            this.HighScore.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.HighScore.UseVisualStyleBackColor = true;
+            this.HighScore.Click += new System.EventHandler(this.HighScore_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aqua;
             this.ClientSize = new System.Drawing.Size(684, 681);
+            this.Controls.Add(this.HighScore);
             this.Controls.Add(this.Paused);
             this.Controls.Add(this.ResumeBtn);
             this.Controls.Add(this.RetryBtn);
@@ -224,6 +239,7 @@ namespace FlappyBird
         private System.Windows.Forms.Button RetryBtn;
         private System.Windows.Forms.Button ResumeBtn;
         private System.Windows.Forms.Label Paused;
+        private System.Windows.Forms.Button HighScore;
     }
 }
 
