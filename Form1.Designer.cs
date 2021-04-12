@@ -1,7 +1,4 @@
-﻿
-using System.Drawing;
-
-namespace FlappyBird
+﻿namespace FlappyBird
 {
     partial class Form1
     {
@@ -107,7 +104,7 @@ namespace FlappyBird
             this.Score.Location = new System.Drawing.Point(12, 9);
             this.Score.Name = "Score";
             this.Score.Size = new System.Drawing.Size(210, 59);
-            this.Score.TabIndex = 5;
+            this.Score.TabIndex = 4;
             this.Score.Text = "Score: 0";
             this.Score.TextChanged += new System.EventHandler(this.ScoreUp);
             // 
@@ -125,7 +122,7 @@ namespace FlappyBird
             this.GameOver.Location = new System.Drawing.Point(127, 252);
             this.GameOver.Name = "GameOver";
             this.GameOver.Size = new System.Drawing.Size(422, 79);
-            this.GameOver.TabIndex = 6;
+            this.GameOver.TabIndex = 5;
             this.GameOver.Text = "GAME OVER!";
             this.GameOver.Visible = false;
             // 
@@ -136,7 +133,7 @@ namespace FlappyBird
             this.EndScore.Location = new System.Drawing.Point(197, 331);
             this.EndScore.Name = "EndScore";
             this.EndScore.Size = new System.Drawing.Size(266, 40);
-            this.EndScore.TabIndex = 7;
+            this.EndScore.TabIndex = 6;
             this.EndScore.Text = "Total Score: -";
             this.EndScore.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.EndScore.Visible = false;
@@ -149,8 +146,8 @@ namespace FlappyBird
             this.RetryBtn.Margin = new System.Windows.Forms.Padding(0);
             this.RetryBtn.Name = "RetryBtn";
             this.RetryBtn.Size = new System.Drawing.Size(117, 44);
-            this.RetryBtn.TabIndex = 8;
-            this.RetryBtn.Text = "Retry";
+            this.RetryBtn.TabIndex = 7;
+            this.RetryBtn.Text = "Menu";
             this.RetryBtn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.RetryBtn.UseVisualStyleBackColor = true;
             this.RetryBtn.Visible = false;
@@ -163,7 +160,7 @@ namespace FlappyBird
             this.ResumeBtn.Margin = new System.Windows.Forms.Padding(0);
             this.ResumeBtn.Name = "ResumeBtn";
             this.ResumeBtn.Size = new System.Drawing.Size(117, 43);
-            this.ResumeBtn.TabIndex = 9;
+            this.ResumeBtn.TabIndex = 8;
             this.ResumeBtn.Text = "Resume";
             this.ResumeBtn.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.ResumeBtn.UseVisualStyleBackColor = true;
@@ -178,7 +175,7 @@ namespace FlappyBird
             this.Paused.Margin = new System.Windows.Forms.Padding(0);
             this.Paused.Name = "Paused";
             this.Paused.Size = new System.Drawing.Size(250, 86);
-            this.Paused.TabIndex = 10;
+            this.Paused.TabIndex = 9;
             this.Paused.Text = "Paused";
             this.Paused.Visible = false;
             // 
@@ -188,7 +185,7 @@ namespace FlappyBird
             this.HighScore.Location = new System.Drawing.Point(233, 435);
             this.HighScore.Name = "HighScore";
             this.HighScore.Size = new System.Drawing.Size(187, 46);
-            this.HighScore.TabIndex = 11;
+            this.HighScore.TabIndex = 10;
             this.HighScore.Text = "Highscores";
             this.HighScore.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.HighScore.UseVisualStyleBackColor = true;

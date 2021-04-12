@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -6,11 +7,12 @@ namespace FlappyBird
 {
     public partial class Form1 : Form
     {
-        int pipeSpeed = 5;
         int gravity = 5;
+        int pipeSpeed = 5;
         int scoreCount = 0;
         int lives = 3;
         int endCount = 0;
+        private MySqlConnection connection;
 
         public Form1()
         {
@@ -58,7 +60,7 @@ namespace FlappyBird
             // Make flappy go up; key is pressed
             if (e.KeyCode == Keys.Space)
             {
-                if (DefaultTimer.Enabled == false && Score.Visible == true)
+                if (DefaultTimer.Enabled == false && Score.Visible == true && ResumeBtn.Visible == false)
                 {
                     DefaultTimer.Start();
                 }
@@ -153,7 +155,6 @@ namespace FlappyBird
                 EndScore.Visible = false;
                 RetryBtn.Visible = false;
                 RetryBtn.Enabled = false;
-                FlappyBird.Visible = true;
                 HighScore.Visible = false;
                 HighScore.Enabled = false;
                 PipeT.Visible = true;
@@ -207,17 +208,17 @@ namespace FlappyBird
         private void ResumeBtn_Click(object sender, EventArgs e)
         {
             // Resume the game and set object states
-            ResumeBtn.Enabled = false;
             ResumeBtn.Visible = false;
+            ResumeBtn.Enabled = false;
 
             Paused.Visible = false;
 
-            DefaultTimer.Start();
+            DefaultTimer.Start(); 
         }
 
         private void HighScore_Click(object sender, EventArgs e)
         {
-            if (GameOver.Visible == true)
+            if (GameOver.Visible == true) 
             {
                 RetryBtn.Visible = false;
                 RetryBtn.Enabled = false;
@@ -232,6 +233,69 @@ namespace FlappyBird
                 GameOver.Visible = true;
 
                 HighScore.Text = "Highscores";
+            }
+            try
+            {
+                InitializeDatabaseConnection();
+
+            }
+            catch
+            {
+                MessageBox.Show("Error: Failed connection");
+            }
+        }
+        private void InitializeDatabaseConnection()
+        {
+            // Connect to the database
+            string server = "localhost";
+            string database = "flappybird-highscores";
+            string dbUsername = "root";
+            string dbPassword = "";
+
+            string connectionString = "SERVER=" + server + ";" + "DATABASE=" +
+                database + ";" + "UID=" + dbUsername + ";" + "PASSWORD=" + dbPassword + ";";
+
+            connection = new MySqlConnection(connectionString);
+
+            OpenConnection();
+        }
+
+        private bool OpenConnection()
+        {
+            // Break connection, failsafe for if the connection was pre-existing
+            CloseConnection();
+
+            try
+            {
+                connection.Open();
+                return true;
+            }
+            catch (MySqlException ex)
+            {
+                switch (ex.Number)
+                {
+                    case 0:
+                        MessageBox.Show("Cannot connect to server. Contact administrator");
+                        break;
+
+                    case 1045:
+                        MessageBox.Show("Invalid username/password, please try again");
+                        break;
+                }
+                return false;
+            }
+        }
+        private bool CloseConnection()
+        {
+            try
+            {
+                connection.Close();
+                return true;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
             }
         }
     }
