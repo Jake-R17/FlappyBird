@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -12,7 +11,6 @@ namespace FlappyBird
         int scoreCount = 0;
         int lives = 3;
         int endCount = 0;
-        private MySqlConnection connection;
 
         public Form1()
         {
@@ -64,7 +62,6 @@ namespace FlappyBird
                 {
                     DefaultTimer.Start();
                 }
-
                 gravity = -5;
             }
 
@@ -169,7 +166,6 @@ namespace FlappyBird
         private void Start()
         {
             // Set all objects to the default location
-
             FlappyBird.Location = new Point(38, 279);
 
             scoreCount = 0;
@@ -184,9 +180,9 @@ namespace FlappyBird
             pipeSpeed = 5;
         }
 
-        // Default screen, shown when loading and after 3 deaths
         private void Menu()
         {
+            // Set object states to represent a menu
             Score.Visible = false;
             EndScore.Visible = false;
             RetryBtn.Visible = true;
@@ -213,7 +209,7 @@ namespace FlappyBird
 
             Paused.Visible = false;
 
-            DefaultTimer.Start(); 
+            DefaultTimer.Start();
         }
 
         private void HighScore_Click(object sender, EventArgs e)
@@ -233,69 +229,6 @@ namespace FlappyBird
                 GameOver.Visible = true;
 
                 HighScore.Text = "Highscores";
-            }
-            try
-            {
-                InitializeDatabaseConnection();
-
-            }
-            catch
-            {
-                MessageBox.Show("Error: Failed connection");
-            }
-        }
-        private void InitializeDatabaseConnection()
-        {
-            // Connect to the database
-            string server = "localhost";
-            string database = "flappybird-highscores";
-            string dbUsername = "root";
-            string dbPassword = "";
-
-            string connectionString = "SERVER=" + server + ";" + "DATABASE=" +
-                database + ";" + "UID=" + dbUsername + ";" + "PASSWORD=" + dbPassword + ";";
-
-            connection = new MySqlConnection(connectionString);
-
-            OpenConnection();
-        }
-
-        private bool OpenConnection()
-        {
-            // Break connection, failsafe for if the connection was pre-existing
-            CloseConnection();
-
-            try
-            {
-                connection.Open();
-                return true;
-            }
-            catch (MySqlException ex)
-            {
-                switch (ex.Number)
-                {
-                    case 0:
-                        MessageBox.Show("Cannot connect to server. Contact administrator");
-                        break;
-
-                    case 1045:
-                        MessageBox.Show("Invalid username/password, please try again");
-                        break;
-                }
-                return false;
-            }
-        }
-        private bool CloseConnection()
-        {
-            try
-            {
-                connection.Close();
-                return true;
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-                return false;
             }
         }
     }

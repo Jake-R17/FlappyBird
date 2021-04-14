@@ -1,7 +1,5 @@
 using System;
 using System.Windows.Forms;
-using MySql.Data;
-using MySql.Data.MySqlClient;
 
 namespace FlappyBird
 {
