@@ -1,7 +1,7 @@
 ﻿using FlappyBird.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace DiscordBotHGuild.DBContext
+namespace FlappyBird.context
 {
     public class SqliteContext : DbContext
     {

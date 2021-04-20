@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DiscordBotHGuild.Models
+namespace FlappyBird.Models
 {
     public abstract class Entity
     {

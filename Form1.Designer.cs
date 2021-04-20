@@ -41,6 +41,9 @@
             this.ResumeBtn = new System.Windows.Forms.Button();
             this.Paused = new System.Windows.Forms.Label();
             this.HighScore = new System.Windows.Forms.Button();
+            this.HighscoreName = new System.Windows.Forms.TextBox();
+            this.NewHighscore = new System.Windows.Forms.Label();
+            this.HighscoresBox = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.FlappyBird)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PipeT)).BeginInit();
@@ -171,7 +174,7 @@
             // 
             this.Paused.AutoSize = true;
             this.Paused.Font = new System.Drawing.Font("Segoe UI", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Paused.Location = new System.Drawing.Point(213, 166);
+            this.Paused.Location = new System.Drawing.Point(213, 175);
             this.Paused.Margin = new System.Windows.Forms.Padding(0);
             this.Paused.Name = "Paused";
             this.Paused.Size = new System.Drawing.Size(250, 86);
@@ -191,12 +194,45 @@
             this.HighScore.UseVisualStyleBackColor = true;
             this.HighScore.Click += new System.EventHandler(this.HighScore_Click);
             // 
+            // HighscoreName
+            // 
+            this.HighscoreName.Location = new System.Drawing.Point(233, 264);
+            this.HighscoreName.Name = "HighscoreName";
+            this.HighscoreName.Size = new System.Drawing.Size(187, 23);
+            this.HighscoreName.TabIndex = 11;
+            this.HighscoreName.Visible = false;
+            // 
+            // NewHighscore
+            // 
+            this.NewHighscore.AutoSize = true;
+            this.NewHighscore.Font = new System.Drawing.Font("Segoe UI Emoji", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.NewHighscore.Location = new System.Drawing.Point(142, 166);
+            this.NewHighscore.Name = "NewHighscore";
+            this.NewHighscore.Size = new System.Drawing.Size(377, 64);
+            this.NewHighscore.TabIndex = 12;
+            this.NewHighscore.Text = "New Highscore!";
+            this.NewHighscore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.NewHighscore.Visible = false;
+            // 
+            // HighscoresBox
+            // 
+            this.HighscoresBox.Location = new System.Drawing.Point(127, 175);
+            this.HighscoresBox.Name = "HighscoresBox";
+            this.HighscoresBox.ReadOnly = true;
+            this.HighscoresBox.Size = new System.Drawing.Size(400, 180);
+            this.HighscoresBox.TabIndex = 13;
+            this.HighscoresBox.Text = "";
+            this.HighscoresBox.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aqua;
             this.ClientSize = new System.Drawing.Size(684, 681);
+            this.Controls.Add(this.HighscoresBox);
+            this.Controls.Add(this.NewHighscore);
+            this.Controls.Add(this.HighscoreName);
             this.Controls.Add(this.HighScore);
             this.Controls.Add(this.Paused);
             this.Controls.Add(this.ResumeBtn);
@@ -237,6 +273,8 @@
         private System.Windows.Forms.Button ResumeBtn;
         private System.Windows.Forms.Label Paused;
         private System.Windows.Forms.Button HighScore;
+        private System.Windows.Forms.TextBox HighscoreName;
+        private System.Windows.Forms.Label NewHighscore;
+        private System.Windows.Forms.RichTextBox HighscoresBox;
     }
 }
-

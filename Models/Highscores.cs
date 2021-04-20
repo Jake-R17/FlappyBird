@@ -1,5 +1,4 @@
-﻿using DiscordBotHGuild.Models;
-using System;
+﻿using System;
 
 namespace FlappyBird.Models
 {
